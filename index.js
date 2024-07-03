@@ -3,6 +3,8 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
+
 
 
 const requestLogger = (request, response, next) => {
@@ -78,7 +80,9 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
-    response.json(persons)
+    Person.find({}).then(persons => {
+        response.json(persons)
+    })
 })
 
 app.get('/api/persons/:id', (request, response) => {
