@@ -15,7 +15,7 @@ if (process.argv.length != 5 && process.argv.length != 3) {
 const password = process.argv[2]
 
 const url =
-    `mongodb+srv://chopsticksmemset:${password}@cluster0.dfttyvx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+    `mongodb+srv://chopsticksmemset:mongodbroot123@cluster0.dfttyvx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
 mongoose.set('strictQuery', false)
 
