@@ -8,13 +8,14 @@ const mongoose = require('mongoose');
 const password = process.argv[2]
 
 const url =
-    `mongodb+srv://chopsticksmemset:mongodbroot123@cluster0.dfttyvx.mongodb.net/noteApp?retryWrites=true&w=majority&appName=Cluster0`
+    `mongodb+srv://chopsticksmemset:mongodbroot123@cluster0.dfttyvx.mongodb.net/phoneBook?retryWrites=true&w=majority&appName=Cluster0`
 
 mongoose.set('strictQuery', false)
 
 mongoose.connect(url)
 
 const personSchema = new mongoose.Schema({
+    id: String,
     name: String,
     number: String,
 })
@@ -135,7 +136,7 @@ app.post('/api/persons', (request, response) => {
         })
     }
     const person = {
-        id: generateId(),
+        id: generateId().toString(),
         name: body.name,
         number: body.number
     }
