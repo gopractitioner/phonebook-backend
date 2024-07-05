@@ -3,32 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const mongoose = require('mongoose');
-
-const password = process.argv[2]
-
-const url =
-    `mongodb+srv://chopsticksmemset:mongodbroot123@cluster0.dfttyvx.mongodb.net/phoneBook?retryWrites=true&w=majority&appName=Cluster0`
-
-mongoose.set('strictQuery', false)
-
-mongoose.connect(url)
-
-const personSchema = new mongoose.Schema({
-    id: String,
-    name: String,
-    number: String,
-})
-
-personSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id.toString()
-        delete returnedObject._id
-        delete returnedObject.__v
-    }
-})
-
-const Person = mongoose.model('Person', personSchema)
+const Person = require('./models/person')
 
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)

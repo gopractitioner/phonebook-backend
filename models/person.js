@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const password = process.argv[2]
 
-const url =
-    `mongodb+srv://chopsticksmemset:mongodbroot123@cluster0.dfttyvx.mongodb.net/phoneBook?retryWrites=true&w=majority&appName=Cluster0`
+const url = process.env.MONGODB_URI
 
 mongoose.set('strictQuery', false)
 
