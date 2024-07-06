@@ -90,8 +90,14 @@ app.get('/api/persons/:id', (request, response) => {
 })
 
 app.get('/info', (request, response) => {
-    const date = new Date()
-    response.send(`<p>Phonebook has info for ${persons.length} people</p><p>${date}</p>`)
+    Person.find({}).then(persons => {
+        const date = new Date()
+        response.send(`<p>Phonebook has info for ${persons.length} people</p><p>${date}</p>`)
+    })
+
+
+    // const date = new Date()
+    // response.send(`<p>Phonebook has info for ${persons.length} people</p><p>${date}</p>`)
 })
 
 const generateId = () => {
