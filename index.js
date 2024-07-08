@@ -154,10 +154,15 @@ const unknownEndpoint = (request, response) => {
 }
 app.use(unknownEndpoint)
 
+
+// notification: error handler middleware must be the last middleware to be loaded, 
+//all routers must be loaded before error handler
+
 const errorHandler = (error, request, response, next) => {
     console.error(error.message)
 
     if (error.name === 'CastError') {
+        console.log('error name is cast error')
         return response.status(400).send({ error: 'malformatted id' })
     }
 
