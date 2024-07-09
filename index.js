@@ -154,14 +154,14 @@ app.delete('/api/persons/:id', (request, response, next) => {
     // response.status(204).end()
     Person.findByIdAndDelete(request.params.id)
         .then(result => {
-            // if (result) {
-            //     console.log('deleted...')
-            //     response.status(204).end()
-            // } else {
-            //     console.log('not found...')
-            //     response.status(404).end()
-            // }
-            response.status(204).end()
+            if (result) {
+                console.log('deleted...')
+                response.status(204).end()
+            } else {
+                console.log('not found...')
+                response.status(404).end()
+            }
+            //response.status(204).end()
         })
         .catch(error => next(error))
 })
